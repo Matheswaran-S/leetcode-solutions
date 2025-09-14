@@ -2,17 +2,17 @@ class Solution {
 public:
     bool isValidSudoku(vector<vector<char>>& board) {
         for(int i=0; i<9; i++){
-            unordered_map<char,int> row;
+            map<char,int> row;
             for(int j=0; j<9; j++){
                 if(row[board[i][j]] == 1) return false;
                 else if(board[i][j] != '.') row[board[i][j]] = 1;
             }
-            unordered_map<char,int> col;
+            map<char,int> col;
             for(int j=0; j<9; j++){
                 if(col[board[j][i]] == 1) return false;
                 else if(board[j][i] != '.') col[board[j][i]] = 1;
             }
-            unordered_map<char,int> grid;
+            map<char,int> grid;
             for(int r = (i%3)*3; r< (i%3)*3 + 3; r++){
                 for(int d = (i/3)*3; d<(i/3)*3 + 3; d++){
                     if(grid[board[r][d]] == 1) return false;
