@@ -11,7 +11,7 @@
 class Solution {
 public:
     ListNode* modifiedList(vector<int>& nums, ListNode* head) {
-        map<int,int> mpp;
+        unordered_map<int,int> mpp;
         for(auto i : nums){
             mpp[i] = 1;
         }
