@@ -14,12 +14,12 @@ private:
     void tsum(TreeNode* root, int k, auto &mpp, bool &ok){
         if(root == NULL) return;
         tsum(root->left, k, mpp, ok);
+        tsum(root->right, k, mpp, ok); 
         if(mpp[k - root->val]){
             ok = true;
             return;
         }
         mpp[root->val] = 1;
-        tsum(root->right, k, mpp, ok); 
     }
 public:
     bool findTarget(TreeNode* root, int k) {
