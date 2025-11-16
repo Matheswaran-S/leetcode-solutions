@@ -2,19 +2,13 @@ class Solution {
 public:
     long long zeroFilledSubarray(vector<int>& nums) {
         int n = nums.size();
-        long long res = 0, l = -1, r = -1;
-        while(l < n){
-            for(r=l+1; r<n; r++){
-                if(nums[r] != 0){
-                    res += ((r-l-1)*(r-l)/2);
-                    l = r;
-                    break;
-                }
+        long long res = 0, streak = 0;
+        for(int i=0; i<n; i++){
+            if(nums[i] == 0){
+                streak++;
+                res += streak;
             }
-            if(r == n){
-                res += ((r-l-1)*(r-l)/2);
-                break;
-            }
+            else streak = 0;
         }
         return res;
     }
