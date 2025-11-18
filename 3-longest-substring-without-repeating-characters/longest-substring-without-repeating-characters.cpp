@@ -4,12 +4,11 @@ public:
         unordered_map<char, int> mpp;
         int l = 0, r = 0, maxlen = 0, n = s.size();
         while(l <= r && r < n){
-            mpp[s[r]]++;
-            while(mpp[s[r]] > 1){
-                mpp[s[l]]--;
-                l++;
+            if(mpp.find(s[r]) != mpp.end() && mpp[s[r]] >= l){
+                l = mpp[s[r]]+1;
             }
             maxlen = max(maxlen, r-l+1);
+            mpp[s[r]] = r;
             r++;
         }
         return maxlen;
