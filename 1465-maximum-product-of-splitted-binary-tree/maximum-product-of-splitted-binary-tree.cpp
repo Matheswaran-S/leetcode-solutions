@@ -1,4 +1,5 @@
 #define mod 1000000007
+#define ll long long
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -12,16 +13,17 @@
  */
 class Solution {
 private:
-    long long pre(TreeNode* root, long long sum, long long tot, long long &maxi, bool ans){
+    int pre(TreeNode* root, int tot, long long &maxi, bool ans){
         if(root == NULL) return 0;
-        sum = root->val+pre(root->left, sum, tot, maxi, ans)+pre(root->right, sum, tot, maxi, ans);
-        if(ans) maxi = max(maxi, sum*(tot-sum));
+        int sum = root->val+pre(root->left, tot, maxi, ans)+pre(root->right, tot, maxi, ans);
+        if(ans) maxi = max(maxi, (ll)sum*(ll)(tot-sum));
         return sum;
     }
 public:
     int maxProduct(TreeNode* root) {
-        long long maxi = LLONG_MIN, sum = pre(root, 0, 0, maxi, false);
-        pre(root, 0, sum, maxi, true);
+        long long maxi = LLONG_MIN;
+        int sum = pre(root, 0, maxi, false);
+        pre(root, sum, maxi, true);
         return maxi%mod;
     }
 };
