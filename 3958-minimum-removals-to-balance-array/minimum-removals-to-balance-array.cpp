@@ -14,7 +14,7 @@ public:
         */
         ll ans = n-1;
         for(int i=0; i<n; i++){
-            auto it = upper_bound(nums.begin()+i, nums.end(), 1LL*nums[i]*k);
+            auto it = lower_bound(nums.begin()+i, nums.end(), 1LL*nums[i]*k + 1);
             ans = min(ans, (ll)i+(nums.end()-it));
         }
         return ans;
