@@ -3,9 +3,11 @@ private:
     int sieve(int n, vector<int> &v, int ans){
         for(int i=2; i<n; i++) v[i] = 1;
         for(int i=2; i*i<n; i++){
-            for(int j=i*i; j<n; j += i){
-                if(v[j]) ans--;
-                v[j] = 0;
+            if(v[i]){
+                for(int j=i*i; j<n; j += i){
+                    if(v[j]) ans--;
+                    v[j] = 0;
+                }
             }
         }
         return ans;
