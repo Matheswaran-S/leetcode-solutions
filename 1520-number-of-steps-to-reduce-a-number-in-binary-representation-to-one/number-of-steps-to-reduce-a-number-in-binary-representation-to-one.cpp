@@ -11,19 +11,12 @@ public:
                     break;
                 }
             }
-            if(car == '0' && s[i] == '0'){
+            if(car == s[i]){
                 ans++;
-            }
-            else if(car == '0' && s[i] == '1'){
-                car = '1';
-                ans += 2;
-            }
-            else if(car == '1' && s[i] == '0'){
-                car = '1';
-                ans += 2;
             }
             else{
-                ans++;
+                car = '1';
+                ans += 2;
             }
         }
         return ans;
