@@ -31,17 +31,17 @@ public:
         } 
         int n = nums.size(), o = count(nums.begin(), nums.end(), 1);
         int ocnt = bexp(2,o), pcnt = 0;
-        vector<int> dp(2048, 0), cnt(31, 0);
+        vector<int> dp(1024, 0), cnt(31, 0);
         for(int i=0; i<n; i++) if(prbit[nums[i]]) cnt[nums[i]]++;
         for(int i=2; i<=30; i++){
             dp[prbit[i]] += cnt[i];
-            for(int j=0; j<2048; j++){
+            for(int j=0; j<1024; j++){
                 if((prbit[i]&j) == 0){
                     dp[prbit[i]|j] = (dp[prbit[i]|j]%mod + (1LL*cnt[i]%mod * dp[j]%mod)%mod)%mod;
                 }
             }
         }
-        for(int i=0; i<2048; i++) pcnt = (pcnt + dp[i]%mod)%mod;
+        for(int i=0; i<1024; i++) pcnt = (pcnt + dp[i]%mod)%mod;
         return ((1LL*pcnt%mod) * ocnt%mod)%mod;
     }
 };
