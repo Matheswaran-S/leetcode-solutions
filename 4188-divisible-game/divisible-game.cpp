@@ -43,7 +43,6 @@ public:
                 mul = pr;
             }
         }
-        cout<<ans1<<' '<<mul;
         if(ans1*mul >= 0) return (ans1*mul)%mod;
         else return (ans1*mul + mod)%mod;
     }
