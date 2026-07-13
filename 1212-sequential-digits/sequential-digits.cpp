@@ -11,7 +11,7 @@ public:
             h /= 10;
         }
         vector<int> ans;
-        int num = 123456789, leftr = 9-lw, rightr = 9-rw, tens = 1, mods = 1;
+        int num = 123456789, leftr = 9-lw, tens = 1, mods = 1;
         for(int i=1; i<=leftr; i++) tens *= 10;
         for(int i=1; i<=lw; i++) mods *= 10;
         for(int w=lw; w<=rw; w++){
