@@ -1,11 +1,11 @@
 class Solution {
 public:
     int missingMultiple(vector<int>& nums, int k) {
-        unordered_map<int,bool> mpp;
+        vector<bool> mpp(101,0);
         for(auto &n : nums) mpp[n] = 1;
         int c = k;
         while(true){
-            if(!mpp[c]) return c;
+            if(c > 100 || !mpp[c]) return c;
             c += k;
         }
     }
