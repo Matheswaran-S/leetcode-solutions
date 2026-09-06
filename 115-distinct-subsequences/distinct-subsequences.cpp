@@ -1,0 +1,18 @@
+class Solution {
+public:
+    int rec(int i, int j, string &s, string &t, int n, int m, vector<vector<int>> &dp){
+        if(i==n && j==m) return 1;
+        if(j == m) return 1;
+        if(i == n) return 0;
+        if(dp[i][j] != -1) return dp[i][j];
+        int cnt = 0;
+        if(s[i] == t[j]) cnt = rec(i+1, j+1, s,t,n,m,dp);
+        cnt += rec(i+1,j,s,t,n,m,dp);
+        return dp[i][j] = cnt;
+    }
+    int numDistinct(string s, string t) {
+        int n = s.size(), m = t.size();
+        vector<vector<int>> dp(n, vector<int>(m,-1));
+        return rec(0,0,s,t,n,m, dp);
+    }
+};
