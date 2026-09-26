@@ -15,7 +15,6 @@ public:
                     t += s[i];
                     i++;
                 }
-                cout<<t<<endl;
                 if(mpp[t].size()) ans += mpp[t];
                 else ans += '?';
             }
